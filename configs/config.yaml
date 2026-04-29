@@ -1,0 +1,24 @@
+# configs/config.yaml
+# Tous les paramètres du projet ici
+# Modifier sans toucher au code !
+
+model:
+  name: "EfficientNetV2"
+  num_classes: 10          # 10 classes CIFAR-10
+  pretrained: true
+  image_size: 224          # Plus petit pour débutant (rapide)
+
+training:
+  epochs: 10               # Commencer petit pour tester
+  batch_size: 32
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  patience: 5              # Early stopping après 5 epochs sans amélioration
+  mixed_precision: true
+
+data:
+  num_workers: 0           # Mettre 0 sur Windows !
+
+mlops:
+  experiment_name: "aerospace-cv-demo"
+  tracking_uri: "http://localhost:5000"

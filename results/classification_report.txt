@@ -1,0 +1,18 @@
+Test Accuracy : 67.80%
+
+              precision    recall  f1-score   support
+
+    airplane       0.66      0.66      0.66        50
+  automobile       0.67      0.74      0.70        50
+        bird       0.70      0.64      0.67        50
+         cat       0.74      0.46      0.57        50
+        deer       0.65      0.68      0.67        50
+         dog       0.68      0.60      0.64        50
+        frog       0.68      0.78      0.73        50
+       horse       0.66      0.70      0.68        50
+        ship       0.62      0.78      0.69        50
+       truck       0.76      0.74      0.75        50
+
+    accuracy                           0.68       500
+   macro avg       0.68      0.68      0.68       500
+weighted avg       0.68      0.68      0.68       500

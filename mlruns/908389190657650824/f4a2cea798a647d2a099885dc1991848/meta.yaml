@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/908389190657650824/f4a2cea798a647d2a099885dc1991848/artifacts
+end_time: 1777477139195
+entry_point_name: ''
+experiment_id: '908389190657650824'
+lifecycle_stage: active
+run_id: f4a2cea798a647d2a099885dc1991848
+run_name: salty-trout-570
+run_uuid: f4a2cea798a647d2a099885dc1991848
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777476674355
+status: 3
+tags: []
+user_id: jgran
