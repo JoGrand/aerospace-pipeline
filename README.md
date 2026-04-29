@@ -49,7 +49,7 @@ Installation
     pip install -r requirements.txt
     python main.py --config config/default.yaml
 
-## 📂 Structure du Projet
+📂 Structure du Projet
 
 ```text
 .
@@ -62,7 +62,7 @@ Installation
 │   └── utils/           # Fonctions utilitaires
 ├── tests/               # Tests unitaires et d'intégration
 └── docker-compose.yml   # Configuration de l'orchestration Docker
-
+```
 
 🤝 Contribution
 
