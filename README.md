@@ -1,143 +1,76 @@
-🛰️ Aerospace Computer Vision Pipeline
+
+🚀 Aerospace Pipeline
 
 <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
-<img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python 3.8+" />
-<img src="https://img.shields.io/badge/MLflow-Tracking-orange" alt="MLflow" />
-<img src="https://img.shields.io/badge/FastAPI-0.95.0-green" alt="FastAPI" />
+<img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status" />
+<img src="https://img.shields.io/badge/python-3.9%2B-blue.svg" alt="Python Version" />
+📝 Présentation
 
-Production-ready Deep Learning pipeline for aerospace imagery classification, built with MLOps best practices.
+aerospace-pipeline est une solution robuste et scalable conçue pour le traitement et l'automatisation de flux de données aéronautiques. Ce projet vise à simplifier l'ingestion, la validation et l'analyse de données complexes (télémétrie, ADS-B, ou cycles de vie logiciels) en respectant les standards de rigueur de l'industrie aérospatiale.
 
-Production-ready Deep Learning pipeline for aerospace imagery classification, built with MLOps best practices.
-📌 Overview
+Que ce soit pour du monitoring en temps réel ou pour des tests d'intégration continue (CI/CD) sur des systèmes critiques, ce pipeline offre une architecture modulaire et performante.
+✨ Fonctionnalités Clés
 
-This project implements a computer vision system for classifying aerospace imagery (e.g., satellite, drone, or aerial photos) into 5 predefined classes using:
+    📥 Ingestion Multi-Sources : Support natif pour divers formats de données (JSON, CSV, binaire) et protocoles.
+    ⚙️ Traitement Automatisé : Nettoyage, normalisation et enrichissement des données en un seul flux.
+    🛡️ Validation de Données : Vérification stricte de l'intégrité des messages pour garantir la sécurité et la fiabilité.
+    📊 Visualisation & Reporting : Exportation vers des tableaux de bord ou génération de rapports de conformité.
+    🚀 Prêt pour le Cloud : Déployable via Docker et compatible avec les principaux fournisseurs (AWS, Azure, GCP).
 
-    EfficientNetV2 (pretrained on ImageNet) as the backbone.
-    A custom classification head (LayerNorm → Dropout → Linear).
-    MLflow for experiment tracking and model registry.
-    FastAPI for serving predictions via a REST API.
-    Docker and GitHub Actions for CI/CD.
+🛠️ Stack Technique
 
-🏗️ Architecture
+    Langage : Python 3.10+
+    Orchestration : GitHub Actions / Apache Airflow (au choix)
+    Conteneurisation : Docker & Docker Compose
+    Analyse : Pandas / PySpark
+    Tests : Pytest
 
-graph TD
-    A[Input Image (512x512)] --> B[EfficientNetV2 (Pretrained)]
-    B --> C[Custom Head: LayerNorm → Dropout → Linear]
-    C --> D[5-Class Prediction]
+🚀 Démarrage Rapide
+Prérequis
 
-Key Features:
+    Docker et Docker Compose installés.
+    Clé API (si nécessaire pour les sources de données externes).
 
-✅ Modular Design: Separation of concerns (data, model, API, MLOps).
-✅ Reproducibility: Versioned datasets, models, and experiments.
-✅ Scalability: Containerized deployment with Docker.
-✅ Monitoring: MLflow for tracking metrics, parameters, and artifacts.
-🚀 Quick Start
-1️⃣ Prerequisites
+Installation
 
-    Python 3.8+
-    Docker (optional, for containerized deployment)
-    Git
+    Cloner le dépôt :
 
-2️⃣ Installation
+    git clone https://github.com/JoGrand/aerospace-pipeline.git
+    cd aerospace-pipeline
 
-git clone https://github.com/JoGrand/aerospace-pipeline.git
-cd aerospace-pipeline
-pip install -r requirements.txt
+    Lancer le pipeline avec Docker :
 
-3️⃣ Run the Pipeline
-Command 	Description 	URL
-make train 	Train the model 	-
-make api 	Launch the FastAPI server 	http://localhost:8000
-make test 	Run unit/integration tests 	-
-make mlflow 	Start MLflow tracking dashboard 	http://localhost:5000
-📂 Project Structure
+    docker-compose up --build
 
-aerospace-pipeline/
-├── api/               # FastAPI endpoints and models
-├── configs/           # Configuration files (hyperparameters, paths)
-├── mlops/             # CI/CD and MLOps scripts
-├── notebooks/         # Jupyter notebooks for EDA/prototyping
-├── src/               # Core ML code (data, model, training)
-│   ├── data/          # Data loading and preprocessing
-│   ├── models/        # Model architecture and training logic
-│   └── utils/         # Helper functions
-├── tests/             # Unit and integration tests
-├── .github/workflows/ # GitHub Actions CI/CD
-├── Dockerfile         # Containerization
-├── Makefile           # Shortcuts for common tasks
-└── README.md          # Project documentation
+    Utilisation en local (VirtualEnv) :
 
-🔧 Configuration
+    python -m venv venv
+    source venv/bin/activate  # Sur Windows: venv\Scripts\activate
+    pip install -r requirements.txt
+    python main.py --config config/default.yaml
 
-Edit configs/train_config.yaml to customize:
+📂 Structure du Projet
 
-    Model hyperparameters (learning rate, batch size, epochs).
-    Data paths (train/val/test splits).
-    MLflow tracking (experiment name, artifact storage).
+├── config/             # Fichiers de configuration (YAML/JSON)
+├── data/               # Dossier pour les échantillons de données (ignorer en prod)
+├── docs/               # Documentation détaillée et schémas
+├── src/                # Code source principal
+│   ├── ingestion/      # Modules de collecte
+│   ├── processing/     # Logique métier et transformation
+│   └── utils/          # Fonctions utilitaires
+├── tests/              # Tests unitaires et d'intégration
+└── docker-compose.yml  # Configuration de l'orchestration Docker
 
-🤖 API Usage
+🤝 Contribution
 
-After running make api, interact with the model via:
+Les contributions sont les bienvenues ! Si vous souhaitez améliorer le pipeline :
 
-curl -X POST "http://localhost:8000/predict" \
-     -H "Content-Type: multipart/form-data" \
-     -F "file=@path/to/image.jpg"
+    Forkez le projet.
+    Créez votre branche (git checkout -b feature/AmazingFeature).
+    Commitez vos modifications (git commit -m 'Add some AmazingFeature').
+    Pushez la branche (git push origin feature/AmazingFeature).
+    Ouvrez une Pull Request.
 
-Or visit the Swagger UI at http://localhost:8000/docs.
-📊 Experiment Tracking
+📄 Licence
 
-Launch MLflow to monitor:
-
-    Training metrics (loss, accuracy).
-    Hyperparameters.
-    Model artifacts.
-
-make mlflow
-
-Access the dashboard at http://localhost:5000.
-🧪 Testing
-
-Run tests with:
-
-make test
-
-Includes:
-
-    Unit tests for data preprocessing.
-    Integration tests for the API.
-    Model validation tests.
-
-🐳 Docker Deployment
-
-Build and run the container:
-
-docker build -t aerospace-pipeline .
-docker run -p 8000:8000 aerospace-pipeline
-
-🤝 Contributing
-
-Contributions are welcome! Follow these steps:
-
-    Fork the repository.
-    Create a feature branch (git checkout -b feature/your-feature).
-    Commit your changes (git commit -m "Add your feature").
-    Push to the branch (git push origin feature/your-feature).
-    Open a Pull Request.
-
-📜 License
-
-This project is licensed under the MIT License - see LICENSE for details.
-📬 Contact
-
-For questions or feedback:
-
-    GitHub Issues: https://github.com/JoGrand/aerospace-pipeline/issues
-    Email: [joseph.grandchamp@gmail.com]
-
-🌟 Acknowledgements
-
-    EfficientNetV2 (Tan & Le, 2021)
-    MLflow
-    FastAPI
-
-Star this repo if you find it useful! ⭐
+Distribué sous la licence MIT. Voir LICENSE pour plus d'informations.
