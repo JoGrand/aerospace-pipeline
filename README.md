@@ -49,17 +49,20 @@ Installation
     pip install -r requirements.txt
     python main.py --config config/default.yaml
 
-📂 Structure du Projet
+## 📂 Structure du Projet
 
-├── config/             # Fichiers de configuration (YAML/JSON)
-├── data/               # Dossier pour les échantillons de données (ignorer en prod)
-├── docs/               # Documentation détaillée et schémas
-├── src/                # Code source principal
-│   ├── ingestion/      # Modules de collecte
-│   ├── processing/     # Logique métier et transformation
-│   └── utils/          # Fonctions utilitaires
-├── tests/              # Tests unitaires et d'intégration
-└── docker-compose.yml  # Configuration de l'orchestration Docker
+```text
+.
+├── config/              # Fichiers de configuration (YAML/JSON)
+├── data/                # Dossier pour les échantillons de données
+├── docs/                # Documentation détaillée et schémas
+├── src/                 # Code source principal
+│   ├── ingestion/       # Modules de collecte
+│   ├── processing/      # Logique métier et transformation
+│   └── utils/           # Fonctions utilitaires
+├── tests/               # Tests unitaires et d'intégration
+└── docker-compose.yml   # Configuration de l'orchestration Docker
+
 
 🤝 Contribution
 
